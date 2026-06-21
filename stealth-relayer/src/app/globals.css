@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------
+   Stealth Relayer — design tokens
+   Palette: near-black base, raised slate panels, hairline borders,
+   cyan-mint signal accent (the "scan" color), rose for destructive /
+   exposure-risk states. Inter only, used at deliberate weights.
+   ---------------------------------------------------------------------- */
+
+:root {
+  --color-base: #0a0a0b;
+  --color-raised: #111113;
+  --color-raised-2: #16161a;
+  --color-border: #242428;
+  --color-border-soft: #1c1c20;
+
+  --color-primary: #f4f4f5;
+  --color-secondary: #a1a1aa;
+  --color-dim: #6b6b73;
+
+  --color-accent: #5eead4;
+  --color-accent-dim: #2dd4bf;
+  --color-accent-soft: #173531;
+
+  --color-danger: #fb7185;
+  --color-danger-soft: #2a1518;
+
+  --color-warn: #fbbf24;
+}
+
+@theme inline {
+  --color-base: var(--color-base);
+  --color-raised: var(--color-raised);
+  --color-raised-2: var(--color-raised-2);
+  --color-border: var(--color-border);
+  --color-border-soft: var(--color-border-soft);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-dim: var(--color-dim);
+  --color-accent: var(--color-accent);
+  --color-accent-dim: var(--color-accent-dim);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-danger: var(--color-danger);
+  --color-danger-soft: var(--color-danger-soft);
+  --color-warn: var(--color-warn);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  background: var(--color-base);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-base);
+}
+
+/* Tabular "data register" treatment for addresses, keys, amounts.
+   Inter has no mono variant, so fixed-width data legibility comes
+   from tabular numerals + tracked letter-spacing instead. */
+.data-mono {
+  font-feature-settings: "tnum" 1, "zero" 1;
+  font-variant-numeric: tabular-nums slashed-zero;
+  letter-spacing: 0.01em;
+}
+
+.label-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+/* Hairline grid backdrop used behind the hero / status rail */
+.grid-fade {
+  background-image:
+    linear-gradient(to right, var(--color-border-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 0%, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 70% 60% at 30% 0%, black 0%, transparent 70%);
+}
+
+/* Scanline sweep used on the masked handle in the Profile panel —
+   the signature motif: a value that exists, is provably yours, but
+   is rendered actively unreadable to observers. */
+@keyframes scan-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.scan-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-accent) 18%, transparent),
+    transparent
+  );
+  animation: scan-sweep 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 0%, transparent);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-sweep::after,
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dim);
+}
