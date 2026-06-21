@@ -13,15 +13,14 @@ StealthPay allows recipients to publish a reusable meta-address while senders ge
 
 ---
 
-```md
+
 <img src="https://github.com/user-attachments/assets/bea2a7cf-ddcb-48c5-a83c-bc83cb080a1d" alt="StealthPay Dashboard" width="900" />
-```
+
 
 Example:
 
-```html
 <img src="[https://github.com/user-attachments/assets/your-image-id](https://github.com/user-attachments/assets/13338775-accf-4684-8a5e-6794bcf0b0b5)" alt="StealthPay Dashboard" width="900" />
-```
+
 
 ---
 
