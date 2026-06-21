@@ -1,4 +1,4 @@
-# StealthPay 🕶️
+# StealthPay 
 
 [![Rust](https://img.shields.io/badge/Rust-000000?style=flat\&logo=rust\&logoColor=white)](https://www.rust-lang.org/)
 [![Tokio](https://img.shields.io/badge/Tokio-Async_Runtime-green)](https://tokio.rs/)
