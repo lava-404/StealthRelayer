@@ -19,7 +19,7 @@ StealthPay allows recipients to publish a reusable meta-address while senders ge
 
 Example:
 
-<img src="[https://github.com/user-attachments/assets/your-image-id](https://github.com/user-attachments/assets/13338775-accf-4684-8a5e-6794bcf0b0b5)" alt="StealthPay Dashboard" width="900" />
+<img src="https://github.com/user-attachments/assets/your-image-id](https://github.com/user-attachments/assets/13338775-accf-4684-8a5e-6794bcf0b0b5" alt="StealthPay Dashboard" width="900" />
 
 
 ---
